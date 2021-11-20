@@ -27,7 +27,57 @@ Template Name: Main page
             endforeach;
     endif;
 ?></div>
+<!--  Выполненные проекты -->
 
+<?php
+ $slider_projects = carbon_get_post_meta( $post->ID, 'slider_projects' );
+ $main_photo_projects = carbon_get_post_meta( $post->ID, 'main_photo_projects' );
+ $num = 0;
+
+ echo "<div id='projects'>";
+echo   "<div class='projects_info'>
+          <div id='main_carousel_projects'>";
+
+ foreach ($slider_projects as $slide_item){
+     if(!empty($slide_item)){
+     $num++;
+     echo "<div id='".$slide_item['id']."' class='slider_projects project' style=' display:". $slide_item['display'] . "'>
+         <div class='slider_description'>" . $slide_item['description'] . "</div>
+            <div class='slider_img_container project_".$num."'>
+                 <div class='slider_wrapper'>";
+
+         foreach ( $slide_item['slider_projects_item'] as $item){
+
+                 if( ! $item[ 'photo' ] ) {
+                     continue;
+                 }
+                        echo '<div class="slider_item">'.
+                               wp_get_attachment_image( $item['photo'],
+                                 'medium', '', array( 'alt' => $item['alt'],));
+                        echo '</div>';
+
+                 }
+
+         echo  "</div>
+                 <a class='slider_control slider_control_left slider_control_show' href='#' role='button'></a>
+		         <a class='slider_control slider_control_right slider_control_show' href='#' role='button'></a>
+             </div>
+         </div>";
+
+     }
+}
+  echo "</div><div id='icons_projects'>";
+ foreach ($main_photo_projects as $main_photo_item){
+     if(!empty($main_photo_item)){
+         echo "<div class='main_photo_project' role='button'
+                onclick='open_project(". $main_photo_item['link'] .", this);'>"
+             . wp_get_attachment_image($main_photo_item['photo'], 'post-thumbnail', '', array( 'alt' => $main_photo_item['alt'],))
+             . "</div>";
+     }
+ }
+   echo "</div></div></div>";
+
+?>
 <!-- Наши заказчики и партнеры -->
 <div class="parthners">
 <?php
