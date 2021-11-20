@@ -106,4 +106,6 @@ function blue_title($string){
 	  $result_string .="</span>";
 	  return   $result_string ;
 	};
+
+
 	
