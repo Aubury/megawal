@@ -83,8 +83,8 @@ Container::make( 'post_meta', __( 'Single project' ) )
                   Field::make( 'image', 'photo', __( ' Photo' ) )->set_width( 50 ),
                   Field::make( 'text', 'alt', __( ' Альтернативный текст для изображения "Alt"' ) )->set_width( 50 ),
               ) ),
-          Field::make( 'rich_text', 'display', __( ' Стили' ))->set_width(50),
-          Field::make( 'rich_text', 'id', __( ' Индификатор' ))->set_width(50),
+          Field::make( 'text', 'display', __( ' Стили' ))->set_width(50),
+          Field::make( 'text', 'id', __( ' Индификатор' ))->set_width(50),
           Field::make( 'rich_text', 'description', __( ' Описание' ))->set_width(100),
 
 
@@ -104,4 +104,33 @@ Container::make( 'post_meta', __( 'Выполненные проекты - Гл�
             ) ),
     ) );
 
-  
+//----------  Продукция --------------
+
+Container::make("post_meta", "Продукция")
+    ->set_priority("high")
+    ->show_on_template("templates/products_page.php")
+    ->add_fields( array(
+        Field::make( 'text', 'products_title', __( ' Заголовок блока' )),
+    ) );
+
+Container::make( 'post_meta', __( 'Блок продукта' ) )
+    ->set_priority("high")
+    ->show_on_template("templates/products_page.php")
+    ->add_fields( array(
+        Field::make( 'complex', 'single_product', 'Максимум 15 блоков' )->set_layout( 'tabbed-vertical' )->set_max( 15 )
+            ->add_fields( array(
+                Field::make( 'complex', 'product_photo', 'Фото продукта' )->set_layout( 'tabbed-vertical' )->set_max( 1 )
+                    ->add_fields( array(
+                        Field::make( 'image', 'photo', __( ' Photo' ) )->set_width( 50 ),
+                        Field::make( 'text', 'alt', __( ' Альтернативный текст для изображения "Alt"' ) )->set_width( 50 ),
+                    ) ),
+                Field::make( 'rich_text', 'product_description', __( ' Описание' ))->set_width(100),
+                Field::make( 'complex', 'links_to_page', 'Ссылка на страницу, максимум 10' )->set_layout( 'tabbed-vertical' )->set_max( 15 )
+                    ->add_fields( array(
+                        Field::make( 'text', 'link', __( 'Ссылка на страницу' ))->set_width(50),
+                        Field::make( 'text', 'text', __( 'Текст ссылки' ))->set_width(50),
+                    )),
+
+
+            ))
+    ));

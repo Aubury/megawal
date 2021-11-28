@@ -1,0 +1,120 @@
+#products {
+  width: 100%;
+  height: auto;
+  background: url("../image/background.jpg") no-repeat;
+  background-size: cover;
+}
+#products h2 {
+  color: #000;
+  font-family: Helvetica;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  margin-top: 15px;
+}
+#products .single_product {
+  width: 100%;
+  min-height: 400px;
+  height: auto;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+#products .single_product .product_photo {
+  flex: 0.66 0 0;
+  width: 66%;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+}
+#products .single_product .product_photo .absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+#products .single_product .product_photo .links_block {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 25px;
+  margin: 0 !important;
+  background-color: rgba(0, 0, 0, 0.61);
+  list-style: none;
+  z-index: 10;
+  color: white;
+}
+#products .single_product .product_photo .links_block li {
+  position: relative;
+  padding-left: 18px;
+  color: white;
+}
+#products .single_product .product_photo .links_block li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 50%;
+}
+#products .single_product .product_photo .links_block li a {
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  text-decoration: underline;
+}
+#products .single_product .product_description {
+  flex: 0.33 0 0;
+  width: 33%;
+  padding: 20px;
+  background: white;
+}
+#products .single_product .product_description h3 {
+  color: #4b95dd;
+  font-family: Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+#products .single_product .product_description p {
+  color: #000;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+@media (max-width: 700px) {
+  #products .single_product {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+  #products .single_product .product_photo {
+    min-height: 300px;
+    width: 100%;
+  }
+  #products .single_product .product_description {
+    width: 100%;
+  }
+  #products .single_product .product_photo.odd {
+    order: -1;
+  }
+}
+
+/*# sourceMappingURL=products_page.css.map */
